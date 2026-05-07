@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rooted Legislative Tracker — 2026 End of Session</title>
+<meta name="description" content="A reader's guide to ratified bills in Alabama, Florida, Georgia, and Mississippi, coded by issue area and impact on economic equity in the South.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-bg: #FAF7F0;
+    --color-surface: #FFFFFF;
+    --color-text: #1A1A1A;
+    --color-text-muted: #5A5A5A;
+    --color-text-soft: #8A8A8A;
+    --color-rule: #E5E0D5;
+    --color-rule-soft: #EFEAE0;
+    --color-accent: #0E4D45;
+    --color-accent-soft: #D5E5E0;
+
+    --color-positive: #3E6B4A;
+    --color-positive-bg: #E8EFE8;
+    --color-negative: #A8482D;
+    --color-negative-bg: #F4E3DC;
+    --color-mixed: #A87F2D;
+    --color-mixed-bg: #F4EBD8;
+
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+
+    --max-width: 920px;
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2.5rem;
+    --space-2xl: 4rem;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  .tracker {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  /* HEADER */
+  .tracker-header {
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .tracker-header h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.1rem, 5.5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.022em;
+    margin-bottom: var(--space-md);
+    font-variation-settings: "opsz" 144;
+  }
+
+  .tracker-header h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-accent);
+  }
+
+  .lede {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    max-width: 58ch;
+    font-variation-settings: "opsz" 36;
+  }
+
+  /* CONTROLS */
+  .controls {
+    margin-bottom: var(--space-xl);
+  }
+
+  .search-wrap {
+    position: relative;
+    margin-bottom: var(--space-lg);
+  }
+
+  .search-wrap::before {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translateY(-50%);
+    border: 1.5px solid var(--color-text-soft);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .search-wrap::after {
+    content: "";
+    position: absolute;
+    left: 1.85rem;
+    top: 50%;
+    width: 6px;
+    height: 1.5px;
+    background: var(--color-text-soft);
+    transform: translateY(2px) rotate(45deg);
+    transform-origin: left center;
+    pointer-events: none;
+  }
+
+  #search {
+    width: 100%;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    padding: 0.85rem 1rem 0.85rem 2.6rem;
+    border: 1px solid var(--color-rule);
+    background: var(--color-surface);
+    color: var(--color-text);
+    border-radius: 2px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  #search::placeholder { color: var(--color-text-soft); }
+
+  #search:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-soft);
+  }
+
+  .filter-group {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    align-items: start;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+    border-bottom: 1px dashed var(--color-rule);
+  }
+
+  .filter-group:last-of-type { border-bottom: none; }
+
+  .filter-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-soft);
+    padding-top: 0.5rem;
+  }
+
+  .filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .chip {
+    font-family: var(--font-sans);
+    font-size: 0.825rem;
+    font-weight: 500;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--color-rule);
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    border-radius: 100px;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .chip:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .chip.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #FFFFFF;
+  }
+
+  .chip[data-value="Positive"].active { background: var(--color-positive); border-color: var(--color-positive); }
+  .chip[data-value="Negative"].active { background: var(--color-negative); border-color: var(--color-negative); }
+  .chip[data-value="Mixed"].active    { background: var(--color-mixed); border-color: var(--color-mixed); }
+
+  .filter-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-rule);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--color-text-soft);
+    letter-spacing: 0.02em;
+  }
+
+  #result-count strong {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  #clear-filters {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+
+  #clear-filters:hover { opacity: 0.7; }
+
+  /* BILL LIST */
+  .bill-list { list-style: none; }
+
+  .bill {
+    background: var(--color-surface);
+    border: 1px solid var(--color-rule);
+    border-left-width: 4px;
+    margin-bottom: 0.6rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    position: relative;
+  }
+
+  .bill:hover {
+    box-shadow: 0 4px 12px rgba(14, 77, 69, 0.06);
+  }
+
+  .bill--positive { border-left-color: var(--color-positive); }
+  .bill--negative { border-left-color: var(--color-negative); }
+  .bill--mixed    { border-left-color: var(--color-mixed); }
+
+  .bill-summary {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "meta direction"
+      "title direction"
+      "tags tags";
+    column-gap: var(--space-md);
+    row-gap: 0.6rem;
+    padding: var(--space-lg);
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+  }
+
+  .bill-summary:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -1px;
+  }
+
+  .bill-meta {
+    grid-area: meta;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--color-text-soft);
+    letter-spacing: 0.04em;
+  }
+
+  .bill-number {
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+
+  .bill-meta-divider {
+    color: var(--color-rule);
+  }
+
+  .bill-title {
+    grid-area: title;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+    font-variation-settings: "opsz" 36;
+  }
+
+  .bill-tags {
+    grid-area: tags;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.2rem;
+  }
+
+  .tag {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    padding: 0.22rem 0.6rem;
+    border-radius: 2px;
+    background: var(--color-rule-soft);
+    color: var(--color-text-muted);
+    border: 1px solid transparent;
+  }
+
+  .tag-framing {
+    background: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent-soft);
+  }
+
+  .bill-direction-badge {
+    grid-area: direction;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.32rem 0.7rem;
+    border-radius: 100px;
+    white-space: nowrap;
+    align-self: start;
+    height: fit-content;
+  }
+
+  .bill--positive .bill-direction-badge {
+    background: var(--color-positive-bg);
+    color: var(--color-positive);
+  }
+  .bill--negative .bill-direction-badge {
+    background: var(--color-negative-bg);
+    color: var(--color-negative);
+  }
+  .bill--mixed .bill-direction-badge {
+    background: var(--color-mixed-bg);
+    color: var(--color-mixed);
+  }
+
+  .direction-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .expand-icon {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-text-soft);
+    transition: transform 0.2s ease;
+    grid-area: direction;
+  }
+
+  /* DETAIL */
+  .bill-detail {
+    display: none;
+    padding: 0 var(--space-lg) var(--space-lg);
+    border-top: 1px solid var(--color-rule-soft);
+    margin-top: 0;
+  }
+
+  .bill.expanded .bill-detail {
+    display: block;
+    animation: detailFadeIn 0.3s ease;
+  }
+
+  @keyframes detailFadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .detail-section { margin-top: var(--space-lg); }
+
+  .detail-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-soft);
+    margin-bottom: var(--space-sm);
+  }
+
+  .detail-section p {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    max-width: 65ch;
+  }
+
+  .detail-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-xl);
+    padding-top: var(--space-md);
+    border-top: 1px dashed var(--color-rule);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .detail-scope {
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .detail-scope::before {
+    content: "Scope: ";
+    color: var(--color-text-soft);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    margin-right: 0.3rem;
+  }
+
+  .detail-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-accent);
+    padding-bottom: 1px;
+    transition: opacity 0.15s ease;
+    font-weight: 500;
+  }
+
+  .detail-link:hover { opacity: 0.65; }
+
+  /* EMPTY STATE */
+  .no-results {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-md);
+    color: var(--color-text-soft);
+  }
+
+  .no-results h3 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+  }
+
+  .no-results p {
+    font-size: 0.95rem;
+    max-width: 40ch;
+    margin: 0 auto;
+  }
+
+  /* FOOTER */
+  .tracker-footer {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-rule);
+    font-size: 0.825rem;
+    color: var(--color-text-soft);
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+
+  .tracker-footer strong {
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    .tracker { padding: var(--space-xl) var(--space-md); }
+
+    .filter-group {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .filter-label { padding-top: 0; }
+
+    .bill-summary {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "meta"
+        "title"
+        "direction"
+        "tags";
+    }
+    .bill-direction-badge {
+      align-self: start;
+      width: fit-content;
+    }
+    .detail-footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  @media print {
+    .controls, .tracker-footer, #clear-filters { display: none; }
+    .bill { break-inside: avoid; box-shadow: none !important; }
+    .bill-detail { display: block !important; }
+  }
+</style>
+</head>
+<body>
+<main class="tracker">
+  <header class="tracker-header">
+    <div class="eyebrow">Rooted Legislative Tracker · 2026 End of Session</div>
+    <h1>The 2026 Southern <em>legislative session</em>, in 32 bills.</h1>
+    <p class="lede">A reader's guide to ratified legislation across Alabama, Florida, Georgia, and Mississippi — coded by issue area, geographic scope, and whether each bill advances or undermines economic equity in the South.</p>
+  </header>
+
+  <section class="controls" aria-label="Filter the bill list">
+    <div class="search-wrap">
+      <input type="search" id="search" placeholder="Search by bill number, title, or keyword…" aria-label="Search bills">
+    </div>
+
+    <div class="filter-group">
+      <span class="filter-label">State</span>
+      <div class="filter-chips" data-filter="state" role="group" aria-label="Filter by state"></div>
+    </div>
+
+    <div class="filter-group">
+      <span class="filter-label">Issue Area</span>
+      <div class="filter-chips" data-filter="topic" role="group" aria-label="Filter by topic"></div>
+    </div>
+
+    <div class="filter-group">
+      <span class="filter-label">Our Take</span>
+      <div class="filter-chips" data-filter="direction" role="group" aria-label="Filter by direction"></div>
+    </div>
+
+    <div class="filter-status">
+      <span id="result-count">Showing all <strong>32</strong> bills</span>
+      <button id="clear-filters" hidden>Clear filters</button>
+    </div>
+  </section>
+
+  <ol class="bill-list" id="bill-list" aria-live="polite"></ol>
+
+  <footer class="tracker-footer">
+    <p><strong>About this tracker.</strong> Compiled by Kindred Futures from Plural and Legiscan source materials. Bill summaries are condensed from public legislative records; the "Implications" framing reflects Kindred Futures' policy analysis and is not legal advice. Direction codes (Positive, Negative, Mixed) reflect the bill's net effect on the conditions Kindred Futures works to advance — racial wealth equity, anti-displacement, and community economic development across the U.S. South.</p>
+  </footer>
+</main>
+
+<script>
+const BILLS = [
+  {
+    "state": "Alabama",
+    "number": "AL HB 55",
+    "title": "Flexible mortgage payment options",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Consumer Finance",
+    "framing": "Wealth-Building",
+    "direction": "Positive",
+    "scope": "Statewide",
+    "summary": "Authorizes mortgage servicers to offer mortgagors flexible payment options — specifically biweekly or semi-monthly mortgage payments — without imposing penalties.",
+    "implications": "Legally instituting flexible mortgage payment options gives homeowners the ability to use these new parameters when affording one lump-sum payment becomes difficult.",
+    "link": "https://legiscan.com/AL/text/HB55/id/3382705"
+  },
+  {
+    "state": "Alabama",
+    "number": "AL HB 142",
+    "title": "Tax increment districts (Mobile County)",
+    "topic": "Economic Development",
+    "secondaryTopic": "Land Use & Zoning",
+    "framing": "Community Investment",
+    "direction": "Mixed",
+    "scope": "Mobile County (Class 2 municipalities)",
+    "summary": "Expands the cap on equalized taxable property in Mobile County tax increment districts (TIFs) from 10% to 50%, matching the threshold previously available only to Class 3 municipalities.",
+    "implications": "Allows more populated Mobile County to access more TIF funds for infrastructure development. Other Alabama counties could leverage this to develop economically distressed areas — though TIFs also carry displacement risk if not paired with anti-displacement guardrails.",
+    "link": "https://legiscan.com/AL/text/HB142/id/3359761"
+  },
+  {
+    "state": "Alabama",
+    "number": "AL HB 250",
+    "title": "Trump Accounts & student loan tax exclusions",
+    "topic": "Taxation",
+    "secondaryTopic": "Wealth-Building",
+    "framing": "Wealth-Building",
+    "direction": "Mixed",
+    "scope": "Statewide",
+    "summary": "Aligns Alabama's income tax with the federal One Big Beautiful Bill Act by excluding employer-paid student loan assistance and employer contributions to 'Trump Accounts' from state taxable gross income beginning 2026.",
+    "implications": "Encourages employer contributions toward debt repayment and early-childhood investment. Could provide leverage for advocates pushing other early-childhood investment proposals in Southern states.",
+    "link": "https://legiscan.com/AL/text/HB250/id/3413135"
+  },
+  {
+    "state": "Alabama",
+    "number": "AL HB 308",
+    "title": "Senior property tax exemption (Mobile County)",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Taxation",
+    "framing": "Anti-Displacement",
+    "direction": "Positive",
+    "scope": "Mobile County (pending referendum)",
+    "summary": "Proposed constitutional amendment freezing assessed property values for owner-occupiers age 65+ (5-year residency requirement) and raising the homestead exemption income cap to $50,000.",
+    "implications": "Freezing property taxes for income-limited seniors is a significant anti-displacement strategy. Raising the income cap expands the population eligible for cost-saving homestead relief.",
+    "link": "https://legiscan.com/AL/text/HB308/2026"
+  },
+  {
+    "state": "Alabama",
+    "number": "AL HB 315",
+    "title": "Vacant property registration (Birmingham)",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Land Use & Zoning",
+    "framing": "Community Stabilization",
+    "direction": "Positive",
+    "scope": "Birmingham (Class 1, Jefferson County)",
+    "summary": "Authorizes Class 1 municipalities (Birmingham) in Jefferson County to enact and enforce vacant property registration ordinances.",
+    "implications": "Gives municipalities legal oversight to systematically register vacant properties, levy fines on absentee owners, and shape the residential and commercial vitality of their region. Replicable in other municipalities.",
+    "link": "https://legiscan.com/AL/text/HB315/id/3328021"
+  },
+  {
+    "state": "Alabama",
+    "number": "AL HB 404",
+    "title": "Community land trusts (Birmingham)",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Affordable Housing",
+    "framing": "Anti-Displacement",
+    "direction": "Positive",
+    "scope": "Birmingham (Class 1, Jefferson County)",
+    "summary": "Authorizes Class 1 municipalities to establish nonprofit community land trusts (CLTs) using 99-year ground leases for low- and moderate-income residents (≤80% and ≤120% AMI), with multi-year property tax exemptions.",
+    "implications": "The CLT model lets eligible residents purchase dwellings affordably via 99-year ground leases. Provides legal infrastructure for CLTs to operate in Jefferson County and serves as a model for other Class 1 municipalities statewide.",
+    "link": "https://legiscan.com/AL/text/HB404/id/3413196"
+  },
+  {
+    "state": "Alabama",
+    "number": "AL HB 496",
+    "title": "Foreclosure bidding preference for adjoining owners",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Foreclosure",
+    "framing": "Anti-Displacement",
+    "direction": "Positive",
+    "scope": "Mobile County (Class 2 municipalities)",
+    "summary": "Requires Class 2 municipalities in Mobile County to allow adjoining owner-occupiers to submit bids before any public foreclosure auction; municipality must accept the highest qualifying adjoining-owner bid.",
+    "implications": "Gives neighbors right of first refusal on foreclosed homes — a buffer against private investors purchasing properties out from under the community. Helps preserve neighborhood culture and local ownership.",
+    "link": "https://legiscan.com/AL/text/HB496/id/3410929"
+  },
+  {
+    "state": "Alabama",
+    "number": "AL HB 501",
+    "title": "Business improvement districts (Prichard)",
+    "topic": "Economic Development",
+    "secondaryTopic": "Small Business",
+    "framing": "Community Investment",
+    "direction": "Positive",
+    "scope": "City of Prichard (Mobile County)",
+    "summary": "Authorizes the City of Prichard to establish business improvement districts where local business owners collectively fund and manage commercial-area improvements, with built-in safeguards for input and financial transparency.",
+    "implications": "Self-help BIDs have historically spurred local economies and ensured economic vitality, stable property values, and new business investment — meaningful for Prichard given its economic profile.",
+    "link": "https://legiscan.com/AL/text/HB501/id/3411152"
+  },
+  {
+    "state": "Alabama",
+    "number": "AL HB 527",
+    "title": "Overtime income tax deduction",
+    "topic": "Taxation",
+    "secondaryTopic": "Labor & Workers",
+    "framing": "Worker Tax Relief",
+    "direction": "Positive",
+    "scope": "Statewide (tax years 2026–2028)",
+    "summary": "Adds a new individual income tax deduction for qualified overtime compensation, capped at $1,000 per taxpayer per year, for tax years 2026–2028.",
+    "implications": "Helps qualifying employees reduce their annual tax burden on overtime earnings; could encourage savings in other areas.",
+    "link": "https://legiscan.com/AL/drafts/HB527/2026"
+  },
+  {
+    "state": "Alabama",
+    "number": "AL HB 609",
+    "title": "Weatherization assistance expansion",
+    "topic": "Climate & Resilience",
+    "secondaryTopic": "Housing & Homeownership",
+    "framing": "Climate Resilience",
+    "direction": "Positive",
+    "scope": "Statewide",
+    "summary": "Raises the household income limit for weatherization assistance from 125% to 200% of the federal poverty level and authorizes ADECA to contract with statewide 501(c)(3) resiliency organizations.",
+    "implications": "Expands eligibility for home weatherization assistance and creates new pathways for local nonprofits to provide weatherization services — important given federal decommitments in this space.",
+    "link": "https://legiscan.com/AL/bill/HB609/2026"
+  },
+  {
+    "state": "Florida",
+    "number": "FL HB 991",
+    "title": "Elections (citizenship verification & voter ID)",
+    "topic": "Voting & Elections",
+    "secondaryTopic": null,
+    "framing": "Voter Suppression",
+    "direction": "Negative",
+    "scope": "Statewide",
+    "summary": "Strengthens citizenship verification in voter registration, tightens candidate qualification rules, narrows acceptable voter ID, standardizes ballot terminology, and enhances enforcement mechanisms for election-law violations.",
+    "implications": "Restructures the Florida electoral process and creates additional barriers to voting for communities that have historically experienced targeted disenfranchisement.",
+    "link": "https://legiscan.com/FL/bill/H0991/2026"
+  },
+  {
+    "state": "Florida",
+    "number": "FL HB 1217",
+    "title": "Prohibition on net-zero greenhouse gas policies",
+    "topic": "Climate & Resilience",
+    "secondaryTopic": null,
+    "framing": "Climate Harm",
+    "direction": "Negative",
+    "scope": "Statewide",
+    "summary": "Broadly bars Florida governmental entities at all levels from pursuing net-zero climate goals — restricting their spending, rulemaking, taxation, and organizational affiliations on emissions reduction, with limited exceptions.",
+    "implications": "Prohibiting government entities from adopting net-zero policies could prove harmful to communities in flood-prone or weather-vulnerable areas and limits households' capacity to build long-term wealth where disaster planning is required.",
+    "link": "https://legiscan.com/FL/bill/H1217/2026"
+  },
+  {
+    "state": "Florida",
+    "number": "FL HB 1389",
+    "title": "Affordable housing zoning preemption",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Land Use & Zoning",
+    "framing": "Affordable Housing Expansion",
+    "direction": "Positive",
+    "scope": "Statewide",
+    "summary": "Requires counties and municipalities to authorize multifamily and mixed-use residential uses on specified property and prohibits height restrictions on certain proposed developments.",
+    "implications": "Restructures municipal zoning to expand housing stock and affordability, lowering bureaucratic barriers to construction and potentially introducing more affordable homes for Florida residents.",
+    "link": "https://legiscan.com/FL/text/H1389/id/3376627"
+  },
+  {
+    "state": "Florida",
+    "number": "FL SB 484",
+    "title": "Data center regulation",
+    "topic": "Climate & Resilience",
+    "secondaryTopic": "Economic Development",
+    "framing": "Consumer & Environmental Protection",
+    "direction": "Positive",
+    "scope": "Statewide",
+    "summary": "Treats large-scale data centers as a distinct, high-impact land use category — requiring they bear their own electricity costs, prohibiting foreign-adversary ownership, mandating water conservation and reclaimed-water use, and imposing local planning oversight with mandatory public hearings on water permits.",
+    "implications": "Provides framework for regulating data center impacts on water and land and ensures citizens don't bear the cost of these high-energy enterprises. Helps communities combat environmental and financial impacts of data centers.",
+    "link": "https://legiscan.com/FL/text/S0484/id/3378184"
+  },
+  {
+    "state": "Florida",
+    "number": "FL SB 594",
+    "title": "Mobile homeowner protections (SHIP Program)",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Affordable Housing",
+    "framing": "Tenant & Owner Protection",
+    "direction": "Positive",
+    "scope": "Statewide",
+    "summary": "Amends the State Housing Initiatives Partnership (SHIP) Program to expand protections and assistance for mobile homeowners, including rental assistance and lot protections.",
+    "implications": "Provides additional protections for a population of homeowners frequently overlooked by housing policy. Helps stabilize families and provides structural support for wealth-building.",
+    "link": "https://legiscan.com/FL/bill/S0594/2026"
+  },
+  {
+    "state": "Florida",
+    "number": "FL SB 962",
+    "title": "Farm/farmland zoning protection",
+    "topic": "Land Use & Zoning",
+    "secondaryTopic": "Wealth-Building",
+    "framing": "Land Retention / Heirs' Property",
+    "direction": "Positive",
+    "scope": "Statewide",
+    "summary": "Explicitly excludes farms and farm operations from the definitions of 'commercial use,' 'industrial use,' and 'mixed use' land categories in Florida's affordable housing statutes.",
+    "implications": "Restricts farms from being rezoned commercial or industrial, helping families maintain control of agricultural land. Particularly important for Black families disproportionately impacted by farmland loss in the Deep South.",
+    "link": "https://legiscan.com/FL/bill/S0962/2026"
+  },
+  {
+    "state": "Florida",
+    "number": "FL SB 1434",
+    "title": "Brownfield infill redevelopment",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Land Use & Zoning",
+    "framing": "Affordable Housing Expansion",
+    "direction": "Positive",
+    "scope": "Statewide (largest counties)",
+    "summary": "Overrides local zoning to fast-track residential infill development on contaminated urban land in Florida's largest counties, with limited protections for neighbors (buffers, recreational land purchase rights) and administrative rather than legislative approval processes.",
+    "implications": "Redeveloping former brownfields and Superfund sites for affordable housing helps communities address environmental harms while expanding affordable housing stock.",
+    "link": "https://legiscan.com/FL/text/S1434/id/3358334"
+  },
+  {
+    "state": "Florida",
+    "number": "FL SB 1602",
+    "title": "Homes for Veterans pilot program",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Veterans",
+    "framing": "Targeted Housing Assistance",
+    "direction": "Positive",
+    "scope": "Pilot (certain counties)",
+    "summary": "Creates the Homes for Veterans Property Management Incentive Pilot Program in certain counties (subject to legislative appropriation), allowing landlords to apply for funding under specified conditions.",
+    "implications": "Establishes the legal framework for a Veterans Home Assistance program in select counties. If successful, the pilot could set precedent for expanding to other economically marginalized populations.",
+    "link": "https://legiscan.com/FL/rollcall/S1602/id/1660042"
+  },
+  {
+    "state": "Georgia",
+    "number": "GA HB 229",
+    "title": "No tax on tips and overtime",
+    "topic": "Taxation",
+    "secondaryTopic": "Labor & Workers",
+    "framing": "Worker Tax Relief",
+    "direction": "Positive",
+    "scope": "Statewide (3-year window)",
+    "summary": "Mirrors federal 'no tax on tips/overtime' policy at the state level — targeted, time-limited (3-year) income tax relief with income-based phase-outs for higher earners.",
+    "implications": "Provides tax relief to hourly workers in tip-dependent industries, helping them retain more wages and easing wage-related stressors.",
+    "link": "https://legiscan.com/GA/text/HB229/id/3403857"
+  },
+  {
+    "state": "Georgia",
+    "number": "GA SB 295",
+    "title": "Local government compensation claims & immigration enforcement",
+    "topic": "Civil Rights & Public Safety",
+    "secondaryTopic": "Immigration",
+    "framing": "Criminalization",
+    "direction": "Negative",
+    "scope": "Statewide",
+    "summary": "Creates financial liability for local governments that fail to enforce certain laws — particularly quality-of-life offenses and immigration — empowers property owners to seek compensation, and strengthens enforcement against sanctuary policies.",
+    "implications": "Has negative implications for unhoused populations and creates pathways to criminalize immigrant communities by holding local governments fiscally liable for non-enforcement.",
+    "link": "https://legiscan.com/GA/bill/HB295/2025"
+  },
+  {
+    "state": "Georgia",
+    "number": "GA HB 1118",
+    "title": "Paid maternal birth leave (state employees)",
+    "topic": "Family & Children",
+    "secondaryTopic": "Labor & Workers",
+    "framing": "Family Stabilization",
+    "direction": "Positive",
+    "scope": "Statewide (state and local education employees)",
+    "summary": "Creates a new 120-hour paid maternal birth leave benefit for certain state and local education employees.",
+    "implications": "Serves as a catalyst for broader social safety net initiatives. Provides advocates with momentum to push for general paid family leave covering all workers.",
+    "link": "https://legiscan.com/GA/bill/HB1118/2025"
+  },
+  {
+    "state": "Georgia",
+    "number": "GA HB 1283",
+    "title": "Family Justice Centers Act",
+    "topic": "Civil Rights & Public Safety",
+    "secondaryTopic": "Family & Children",
+    "framing": "Survivor Services",
+    "direction": "Positive",
+    "scope": "Statewide",
+    "summary": "Creates a comprehensive legal structure for Family Justice Centers — one-stop service hubs for crime victims — extends evidence preservation timelines for sexual assault cases, and clarifies records protections when service providers co-locate with prosecutors or law enforcement.",
+    "implications": "Provides a framework for streamlined emergency response services for those experiencing family violence, violent crimes, or sexual assault — a meaningful step toward localized resources for disproportionately impacted communities.",
+    "link": "https://legiscan.com/GA/bill/HB1283/2025"
+  },
+  {
+    "state": "Georgia",
+    "number": "GA SB 406",
+    "title": "Property Owners Bill of Rights (HOA reform)",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Foreclosure",
+    "framing": "Anti-Foreclosure / Homeowner Protection",
+    "direction": "Positive",
+    "scope": "Statewide",
+    "summary": "Increases state oversight of Property Owners Associations (POAs/HOAs), establishes a formal complaint and enforcement system, raises foreclosure thresholds to the lesser of $4,000 or 12 months arrears (floor of $2,000), extends lien lapse from 4 to 6 years, and removes POAs' ability to bid on foreclosure sales.",
+    "implications": "Provides households facing HOA foreclosure more respite while decreasing the regulatory power of HOAs, which have historically functioned as agencies of harm against Black households.",
+    "link": "https://legiscan.com/GA/bill/SB406/2025"
+  },
+  {
+    "state": "Georgia",
+    "number": "GA SB 462",
+    "title": "Surprise billing protection (ground ambulance)",
+    "topic": "Health Care",
+    "secondaryTopic": null,
+    "framing": "Medical Debt Prevention",
+    "direction": "Positive",
+    "scope": "Statewide",
+    "summary": "Amends Georgia's Surprise Billing Consumer Protection Act to close the ground ambulance loophole, extending out-of-network surprise billing protections to ground ambulance services.",
+    "implications": "Mandates insurer coverage of emergency ground ambulance transport when initiated by emergency personnel rather than the individual. Reduces medical debt risk and helps community members historically saddled with medical indebtedness.",
+    "link": "https://legiscan.com/GA/bill/SB462/2025"
+  },
+  {
+    "state": "Georgia",
+    "number": "GA HB 463",
+    "title": "Economic Growth and Tax Relief Act",
+    "topic": "Taxation",
+    "secondaryTopic": null,
+    "framing": "Wealth-Stripping",
+    "direction": "Negative",
+    "scope": "Statewide",
+    "summary": "Sweeping changes to Georgia's tax code: staged decreases in individual and corporate income taxes, expanded deductions for single and joint filers, and elimination of several tax credits and sales tax exemptions.",
+    "implications": "Lowering income taxes without offsetting revenue could create funding gaps in social safety programs. Tax cuts deliver more pronounced benefits to higher-income individuals while disproportionately harming lower-income households now facing both state and federal disinvestment from vital services.",
+    "link": "https://legiscan.com/GA/bill/HB463/2025"
+  },
+  {
+    "state": "Mississippi",
+    "number": "MS HB 343",
+    "title": "ICHRA tax credit (small employer health)",
+    "topic": "Health Care",
+    "secondaryTopic": "Taxation",
+    "framing": "Health Coverage Expansion",
+    "direction": "Positive",
+    "scope": "Statewide (small businesses)",
+    "summary": "Creates a state income tax credit for small business employers in Mississippi that switch from traditional group health insurance to an Individual Coverage Health Reimbursement Arrangement (ICHRA), allowing employees to purchase individual insurance with employer-provided funds.",
+    "implications": "Eases cost burden on small employers offering flexible health benefits — particularly important after expiration of federal healthcare subsidies. Helps employees retain coverage without using the more expensive marketplace.",
+    "link": "https://legiscan.com/MS/bill/HB343/2026"
+  },
+  {
+    "state": "Mississippi",
+    "number": "MS HB 1380",
+    "title": "Homestead exemption (surviving spouses)",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Taxation",
+    "framing": "Family Stabilization",
+    "direction": "Positive",
+    "scope": "Statewide",
+    "summary": "Allows surviving spouses to roll into the primary applicant position on homestead exemption applications when the deceased spouse had qualified for an increased exemption due to age or disability, and permits amended applications when prior applicants failed to claim additional eligibility.",
+    "implications": "Transferring exemptions to surviving spouses helps families maintain homeownership — particularly meaningful when the surviving spouse is on a fixed income.",
+    "link": "https://legiscan.com/MS/bill/HB1380/2026"
+  },
+  {
+    "state": "Mississippi",
+    "number": "MS HB 1404",
+    "title": "Fraudulent utility conversion (tenant protection)",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Tenant Rights",
+    "framing": "Tenant & Owner Protection",
+    "direction": "Positive",
+    "scope": "Statewide",
+    "summary": "Creates a criminal offense when a landlord collects utility payments from tenants but fails to forward those payments to the utility provider, resulting in service interruption. Grants tenants the right to terminate the lease in such cases (with limited exceptions).",
+    "implications": "Institutionalizes tenant protections against fraudulent landlord practices, providing a roadmap for tenants to receive financial compensation when landlords misappropriate utility payments.",
+    "link": "https://legiscan.com/MS/bill/HB1404/2026"
+  },
+  {
+    "state": "Mississippi",
+    "number": "MS SB 2202",
+    "title": "Anti-union restrictions on state-incentivized firms",
+    "topic": "Labor & Workers",
+    "secondaryTopic": null,
+    "framing": "Worker Harm / Anti-Union",
+    "direction": "Negative",
+    "scope": "Statewide (firms receiving state incentives)",
+    "summary": "Bars Mississippi firms receiving state economic development incentives from recognizing unions via card check (requiring NLRB secret ballot), from voluntarily sharing employee contact info with unions without written consent, and from signing neutrality agreements. Obligations also pass through to subcontractors.",
+    "implications": "Severely limits workers' rights to organize against unfair labor practices. Workers' organizing capacity has been one of the key safeguards employees rely on, and hampering it has alarming implications for labor protections in the state.",
+    "link": "https://legiscan.com/MS/bill/SB2257/2026"
+  },
+  {
+    "state": "Mississippi",
+    "number": "MS SB 2257",
+    "title": "Mixed-finance housing authorities",
+    "topic": "Housing & Homeownership",
+    "secondaryTopic": "Affordable Housing",
+    "framing": "Affordable Housing Expansion",
+    "direction": "Positive",
+    "scope": "Statewide",
+    "summary": "Amends Mississippi's Housing Authorities Law to authorize participation in mixed-finance housing projects (combining LIHTC and other private resources with state/federal funding), enables self-insurance pooling, allows joint cooperative arrangements, and extends protections to affiliated entities.",
+    "implications": "Creates new pathways for cities and municipalities to develop affordable housing through mixed financing. Could catalyze new methods to bridge the housing affordability gap in politically and economically distressed communities.",
+    "link": "https://legiscan.com/MS/bill/SB2257/2026"
+  },
+  {
+    "state": "Mississippi",
+    "number": "MS SB 2409",
+    "title": "Strengthen Mississippi Homes Act",
+    "topic": "Climate & Resilience",
+    "secondaryTopic": "Housing & Homeownership",
+    "framing": "Climate Resilience",
+    "direction": "Positive",
+    "scope": "Statewide (1,500-home pilot)",
+    "summary": "Reforms Mississippi's existing hurricane mitigation program and establishes new funding mechanisms — grants up to $10,000 — for homeowners to retrofit roofs against wind damage. Initial phase serves 1,500 homeowners.",
+    "implications": "Could incentivize insurers to offer competitive rates in coastal communities and mitigate weatherproofing costs for households facing extreme weather. Pilot may scale.",
+    "link": "https://legiscan.com/MS/bill/SB2409/2026"
+  },
+  {
+    "state": "Mississippi",
+    "number": "MS SB 2588",
+    "title": "SHIELD Act (voter ID & SAVE database)",
+    "topic": "Voting & Elections",
+    "secondaryTopic": null,
+    "framing": "Voter Suppression",
+    "direction": "Negative",
+    "scope": "Statewide",
+    "summary": "Amends Mississippi's voter registration laws to strengthen citizenship verification using the federal SAVE (Systematic Alien Verification for Entitlements) database and limits forms of acceptable identification at the polls.",
+    "implications": "Severely limits suitable voter IDs, adding restrictions and complicating the voting process. Could disincentivize voters in the long term and disenfranchise them in the short.",
+    "link": "https://legiscan.com/MS/bill/SB2588/2026"
+  }
+];
+
+const TOPIC_ORDER = [
+  "Housing & Homeownership",
+  "Land Use & Zoning",
+  "Taxation",
+  "Labor & Workers",
+  "Voting & Elections",
+  "Climate & Resilience",
+  "Health Care",
+  "Family & Children",
+  "Civil Rights & Public Safety",
+  "Economic Development"
+];
+
+const state = {
+  filters: { state: new Set(), topic: new Set(), direction: new Set() },
+  search: "",
+  expanded: new Set(),
+};
+
+function uniq(arr) { return [...new Set(arr)].filter(Boolean); }
+
+function getOptions(type) {
+  if (type === "state") return uniq(BILLS.map(b => b.state)).sort();
+  if (type === "direction") return ["Positive", "Mixed", "Negative"];
+  if (type === "topic") {
+    const present = new Set(BILLS.map(b => b.topic));
+    return TOPIC_ORDER.filter(t => present.has(t));
+  }
+  return [];
+}
+
+function renderFilterChips() {
+  document.querySelectorAll(".filter-chips").forEach(container => {
+    const type = container.dataset.filter;
+    container.innerHTML = getOptions(type).map(opt =>
+      `<button class="chip" data-type="${type}" data-value="${opt}" type="button" aria-pressed="false">${opt}</button>`
+    ).join("");
+  });
+
+  document.querySelectorAll(".chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      const { type, value } = chip.dataset;
+      const set = state.filters[type];
+      if (set.has(value)) {
+        set.delete(value);
+        chip.classList.remove("active");
+        chip.setAttribute("aria-pressed", "false");
+      } else {
+        set.add(value);
+        chip.classList.add("active");
+        chip.setAttribute("aria-pressed", "true");
+      }
+      renderBills();
+      updateClearButton();
+    });
+  });
+}
+
+function applyFilters() {
+  const q = state.search;
+  return BILLS.filter(b => {
+    if (state.filters.state.size && !state.filters.state.has(b.state)) return false;
+    if (state.filters.direction.size && !state.filters.direction.has(b.direction)) return false;
+    if (state.filters.topic.size) {
+      const matches = state.filters.topic.has(b.topic) ||
+                      (b.secondaryTopic && state.filters.topic.has(b.secondaryTopic));
+      if (!matches) return false;
+    }
+    if (q) {
+      const haystack = `${b.number} ${b.title} ${b.summary} ${b.implications} ${b.framing} ${b.topic} ${b.secondaryTopic||""}`.toLowerCase();
+      if (!haystack.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function renderBills() {
+  const filtered = applyFilters();
+  const list = document.getElementById("bill-list");
+  const counter = document.getElementById("result-count");
+
+  if (filtered.length === BILLS.length) {
+    counter.innerHTML = `Showing all <strong>${BILLS.length}</strong> bills`;
+  } else if (filtered.length === 0) {
+    counter.innerHTML = `<strong>No bills</strong> match these filters`;
+  } else {
+    counter.innerHTML = `Showing <strong>${filtered.length}</strong> of ${BILLS.length} bills`;
+  }
+
+  if (filtered.length === 0) {
+    list.innerHTML = `
+      <div class="no-results">
+        <h3>No bills match.</h3>
+        <p>Try removing a filter or broadening your search.</p>
+      </div>`;
+    return;
+  }
+
+  list.innerHTML = filtered.map(b => {
+    const dirClass = b.direction.toLowerCase();
+    const expanded = state.expanded.has(b.number);
+    const expandedClass = expanded ? "expanded" : "";
+    const secondary = b.secondaryTopic
+      ? `<span class="tag tag-topic">${b.secondaryTopic}</span>`
+      : "";
+    return `
+      <li class="bill ${expandedClass} bill--${dirClass}" data-id="${b.number}">
+        <button class="bill-summary" aria-expanded="${expanded}" type="button">
+          <div class="bill-meta">
+            <span class="bill-number">${b.number}</span>
+            <span class="bill-meta-divider">·</span>
+            <span class="bill-state">${b.state}</span>
+          </div>
+          <h2 class="bill-title">${b.title}</h2>
+          <div class="bill-tags">
+            <span class="tag tag-topic">${b.topic}</span>
+            ${secondary}
+            <span class="tag tag-framing">${b.framing}</span>
+          </div>
+          <span class="bill-direction-badge">
+            <span class="direction-dot" aria-hidden="true"></span>${b.direction}
+          </span>
+        </button>
+        <div class="bill-detail">
+          <div class="detail-section">
+            <div class="detail-label">What it does</div>
+            <p>${b.summary}</p>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Implications</div>
+            <p>${b.implications}</p>
+          </div>
+          <div class="detail-footer">
+            <span class="detail-scope">${b.scope}</span>
+            <a href="${b.link}" target="_blank" rel="noopener noreferrer" class="detail-link">View bill on Legiscan →</a>
+          </div>
+        </div>
+      </li>
+    `;
+  }).join("");
+
+  list.querySelectorAll(".bill-summary").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const li = btn.closest(".bill");
+      const id = li.dataset.id;
+      if (state.expanded.has(id)) {
+        state.expanded.delete(id);
+        li.classList.remove("expanded");
+        btn.setAttribute("aria-expanded", "false");
+      } else {
+        state.expanded.add(id);
+        li.classList.add("expanded");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+}
+
+function clearFilters() {
+  Object.values(state.filters).forEach(s => s.clear());
+  state.search = "";
+  document.getElementById("search").value = "";
+  document.querySelectorAll(".chip").forEach(c => {
+    c.classList.remove("active");
+    c.setAttribute("aria-pressed", "false");
+  });
+  renderBills();
+  updateClearButton();
+}
+
+function updateClearButton() {
+  const hasActive = state.search ||
+    Object.values(state.filters).some(s => s.size > 0);
+  document.getElementById("clear-filters").hidden = !hasActive;
+}
+
+document.getElementById("search").addEventListener("input", e => {
+  state.search = e.target.value.toLowerCase().trim();
+  renderBills();
+  updateClearButton();
+});
+
+document.getElementById("clear-filters").addEventListener("click", clearFilters);
+
+renderFilterChips();
+renderBills();
+</script>
+</body>
+</html>
